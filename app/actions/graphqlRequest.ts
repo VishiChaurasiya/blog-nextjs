@@ -13,6 +13,7 @@ export default async function graphqlRequest(query: {
   }
 
   const res = await fetch(url, {
+    next: { tags: ["api"] },
     headers,
     method: "POST",
     body: JSON.stringify(query),
