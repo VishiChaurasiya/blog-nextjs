@@ -42,12 +42,11 @@ export async function getPosts(): Promise<Post[]> {
           }
         }
       }
-    }
-    `,
+    }`,
   };
 
   const res = await graphqlRequest(query);
-  const posts = res.data.tags.nodes;
+  const posts = res.data.posts.nodes;
 
   return posts;
 }
