@@ -32,7 +32,7 @@ const Header: React.FC<SearchProps> = ({ name, description, tags }) => {
         {tags.map(({ name, slug }) => (
           <Link
             key={slug}
-            href={`blog/${slug}`}
+            href={`blog/tag/${slug}`}
             className="px-[20px] py-[8px] rounded-[8px] border border-black text-sm"
             style={{
               background:

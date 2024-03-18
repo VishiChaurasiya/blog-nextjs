@@ -10,6 +10,7 @@ export interface Post {
   tags: {
     nodes: {
       name: string;
+      slug: string;
     }[];
   };
   featuredImage: {
@@ -33,6 +34,7 @@ export async function getPosts(): Promise<Post[]> {
           tags {
             nodes {
               name
+              slug
             }
           }
           featuredImage {
