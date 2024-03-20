@@ -15,19 +15,20 @@ const blog = async ({ params }: { params: IParams }) => {
   }
 
   return (
-    <div className="px-[15px] py-[40px] md:px-[92px] md:py-[64px]">
-      <Post post={post} disableLink />
+    <div>
+      <header className="px-[15px] py-[40px] md:px-[92px] md:py-[64px] bg-black/5">
+        <Post post={post} disableLink />
+      </header>
 
-      <div className="flex justify-between gap-6 mt-[40px] md:mt-[90px] ">
-        <div
+      <main className="px-[15px] py-[40px] md:px-[92px] md:py-[64px] flex justify-between gap-8 relative">
+        <section
           id="post-content"
           className="flex-[3]"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
-        <div className="hidden lg:block flex-1 flex-shrink-0">
-          
-        </div>
-      </div>
+
+        <nav className="hidden lg:block flex-1 flex-shrink-0 h-[calc(100vh-130px)] sticky top-[100px] rounded-[10px] bg-black/5 mt-5"></nav>
+      </main>
     </div>
   );
 };

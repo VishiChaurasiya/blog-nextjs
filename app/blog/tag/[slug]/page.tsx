@@ -36,7 +36,7 @@ const blogs = async ({ params }: { params: IParams }) => {
   return (
     <div>
       <Search name={tag.name} description={tag.description} tags={tags} />
-      <div className="px-[15px] py-[40px] lg:px-[92px] lg:py-[64px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center gap-8">
+      <main className="px-[15px] py-[40px] lg:px-[92px] lg:py-[64px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-items-center gap-8">
         {filteredPosts.map((post, index) => (
           <article className="flex flex-col gap-4 flex-1" key={index}>
             <Link href={`/blog/${post.slug}`}>
@@ -66,7 +66,7 @@ const blogs = async ({ params }: { params: IParams }) => {
             </span>
           </article>
         ))}
-      </div>
+      </main>
     </div>
   );
 };
