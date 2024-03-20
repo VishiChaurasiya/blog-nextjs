@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Post } from "@/app/actions/getPosts";
+import { Post as IPost } from "@/app/actions/getPosts";
 
 interface PostProps {
-  post: Post;
+  post: IPost;
   disableLink?: boolean;
 }
 
