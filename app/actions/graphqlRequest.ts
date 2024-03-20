@@ -1,7 +1,7 @@
 export default async function graphqlRequest(query: {
   query: string;
 }): Promise<any> {
-  const url = "https://www.interactly.video/blog/graphql";
+  const url = "https://www.personaliz.ai/blog/index.php?graphql";
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
 

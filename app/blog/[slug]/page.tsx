@@ -1,4 +1,6 @@
 import { getPosts } from "@/app/actions/getPosts";
+import Post from "@/app/components/blog/Post";
+import { notFound } from "next/navigation";
 
 interface IParams {
   slug?: string;
@@ -6,14 +8,21 @@ interface IParams {
 
 const blog = async ({ params }: { params: IParams }) => {
   const posts = await getPosts();
-  const data = posts.find((post) => post.slug === params.slug);
+  const post = posts.find((post) => post.slug === params.slug);
 
-  if (!data) return <h1>Post not found</h1>;
+  if (!post) {
+    return notFound();
+  }
 
   return (
-    <div>
-      <h1 className="mt-[100px]">{data.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: data.content }} />
+    <div className="px-[15px] py-[40px] md:px-[92px] md:py-[64px]">
+      <Post post={post} disableLink />
+
+      <div
+        id="post-content"
+        className="mt-[40px] md:mt-[90px]"
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
     </div>
   );
 };

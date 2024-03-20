@@ -6,6 +6,7 @@ export interface Post {
   id: string;
   modified: string;
   excerpt: string;
+  date: string;
   content: string;
   tags: {
     nodes: {
@@ -16,6 +17,11 @@ export interface Post {
   featuredImage: {
     node: {
       sourceUrl: string;
+    };
+  };
+  author: {
+    node: {
+      name: string;
     };
   };
 }
@@ -30,6 +36,7 @@ export async function getPosts(): Promise<Post[]> {
           id
           modified
           excerpt
+          date
           content
           tags {
             nodes {
@@ -42,13 +49,33 @@ export async function getPosts(): Promise<Post[]> {
               sourceUrl
             }
           }
+          author {
+            node {
+              name
+            }
+          }      
         }
       }
     }`,
   };
 
   const res = await graphqlRequest(query);
-  const posts = res.data.posts.nodes;
+  const posts: Post[] = res.data.posts.nodes;
+
+  posts.map((post) => {
+    const date = new Date(post.date);
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+    };
+    const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
+      date
+    );
+    post.date = formattedDate;
+
+    return post;
+  });
 
   return posts;
 }
