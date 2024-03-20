@@ -18,11 +18,16 @@ const blog = async ({ params }: { params: IParams }) => {
     <div className="px-[15px] py-[40px] md:px-[92px] md:py-[64px]">
       <Post post={post} disableLink />
 
-      <div
-        id="post-content"
-        className="mt-[40px] md:mt-[90px]"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
+      <div className="flex justify-between gap-6 mt-[40px] md:mt-[90px] ">
+        <div
+          id="post-content"
+          className="flex-[3]"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+        <div className="hidden lg:block flex-1 flex-shrink-0">
+          
+        </div>
+      </div>
     </div>
   );
 };

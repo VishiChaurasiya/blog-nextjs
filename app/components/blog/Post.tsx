@@ -19,7 +19,7 @@ const Post: React.FC<PostProps> = ({ post, disableLink }) => {
             height="380"
             src={post.featuredImage.node.sourceUrl}
             alt="personaliz_logo"
-            className="w-full h-full flex-shrink-0 rounded-[20px] object-cover"
+            className="w-full lg:aspect-square rounded-[20px] object-cover"
           />
         ) : (
           <Link href={disableLink ? "" : `/blog/${post.slug}`}>
@@ -28,7 +28,7 @@ const Post: React.FC<PostProps> = ({ post, disableLink }) => {
               height="380"
               src={post.featuredImage.node.sourceUrl}
               alt="personaliz_logo"
-              className="w-full h-full rounded-[20px] object-cover"
+              className="w-full lg:aspect-square rounded-[20px] object-cover"
             />
           </Link>
         )}

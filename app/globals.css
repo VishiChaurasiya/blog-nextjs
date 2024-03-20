@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#post-content * {
+  all: revert;
+}
+
+#post-content img {
+  max-width: 800px;
+  width: 100%;
+}
