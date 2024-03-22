@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Post as IPost } from "@/app/actions/getPosts";
@@ -9,7 +7,7 @@ interface PostProps {
   disableLink?: boolean;
 }
 
-const Post: React.FC<PostProps> = ({ post, disableLink }) => {
+const Post = ({ post, disableLink }: PostProps) => {
   return (
     <div className="flex flex-col lg:flex-row gap-[25px] lg:gap-[40px]">
       <div className="flex-[1]">
@@ -22,7 +20,7 @@ const Post: React.FC<PostProps> = ({ post, disableLink }) => {
             className="w-full lg:aspect-square rounded-[20px] object-cover"
           />
         ) : (
-          <Link href={disableLink ? "" : `/blog/${post.slug}`}>
+          <Link href={`/blog/${post.slug}`}>
             <Image
               width="600"
               height="380"

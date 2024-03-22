@@ -4,6 +4,7 @@ import { getPosts } from "@/app/actions/getPosts";
 import { notFound } from "next/navigation";
 import { getTags } from "@/app/actions/getTags";
 import Image from "next/image";
+import CTA from "@/app/components/CTA";
 
 interface IParams {
   slug?: string;
@@ -67,6 +68,7 @@ const blogs = async ({ params }: { params: IParams }) => {
           </article>
         ))}
       </main>
+      <CTA />
     </div>
   );
 };

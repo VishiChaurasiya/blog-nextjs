@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPosts } from "../actions/getPosts";
 import Post from "../components/blog/Post";
+import { GoBell } from "react-icons/go";
 
 interface Color {
   bg: string;
@@ -66,6 +67,38 @@ const blogs = async () => {
           ))}
         </div>
       </main>
+      <div className="lg:h-[400px] bg-[#F9F5EF] px-[15px] lg:px-[92px] py-[40px] flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-28">
+        <div>
+          <h1 className="text-[25px] lg:text-[36px] font-semibold">
+            Stay in Touch with Us.
+          </h1>
+          <p className="text-[15px] lg:text-xl text-black/60 mt-1 mb-[30px] lg:mb-[44px]">
+            Follow our Social Media Pages & Never miss our Latest Updates
+          </p>
+          <form className="flex flow-row">
+            <input
+              required
+              type="email"
+              placeholder="Enter your Email Address"
+              className="px-[10px] lg:px-[25px] py-[5px] lg:py-[15px] text-sm lg:text-lg placeholder:text-sm lg:placeholder:text-base placeholder:text-black/60 outline-none bg-transparent border border-black/80 rounded-l-[10px] w-[200px] lg:w-[500px]"
+            />
+            <button
+              type="submit"
+              className="flex-center gap-2 font-semibold w-[110px] lg:w-[190px] h-[50px] lg:h-[62px] bg-black rounded-r-[10px] text-white text-xs lg:text-base"
+            >
+              <GoBell size={20} />
+              Notify me
+            </button>
+          </form>
+        </div>
+        <Image
+          className="w-[200px] lg:w-[300px] flex-shrink-0"
+          width="300"
+          height="300"
+          src="https://dyolkjkaata8s.cloudfront.net/images/notify_me_image.svg"
+          alt="logo"
+        />
+      </div>
     </div>
   );
 };

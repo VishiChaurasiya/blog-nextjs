@@ -1,4 +1,5 @@
 import { getPosts } from "@/app/actions/getPosts";
+import CTA from "@/app/components/CTA";
 import Post from "@/app/components/blog/Post";
 import { notFound } from "next/navigation";
 
@@ -29,6 +30,7 @@ const blog = async ({ params }: { params: IParams }) => {
 
         <nav className="hidden lg:block flex-1 flex-shrink-0 h-[calc(100vh-130px)] sticky top-[100px] rounded-[10px] bg-black/5 mt-5"></nav>
       </main>
+      <CTA />
     </div>
   );
 };
