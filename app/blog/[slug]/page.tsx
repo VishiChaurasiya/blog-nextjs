@@ -1,6 +1,7 @@
 import { getPosts } from "@/app/actions/getPosts";
-import CTA from "@/app/components/CTA";
+import CTA from "@/app/components/blog/CTA";
 import Post from "@/app/components/blog/Post";
+import SideNavbar from "@/app/components/blog/SideNavbar";
 import { notFound } from "next/navigation";
 
 interface IParams {
@@ -24,11 +25,10 @@ const blog = async ({ params }: { params: IParams }) => {
       <main className="px-[15px] py-[40px] md:px-[92px] md:py-[64px] flex justify-between gap-8 relative">
         <section
           id="post-content"
-          className="flex-[3]"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
-        <nav className="hidden lg:block flex-1 flex-shrink-0 h-[calc(100vh-130px)] sticky top-[100px] rounded-[10px] bg-black/5 mt-5"></nav>
+        <SideNavbar content={post.content} />
       </main>
       <CTA />
     </div>
