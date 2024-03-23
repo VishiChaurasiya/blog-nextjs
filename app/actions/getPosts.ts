@@ -24,6 +24,47 @@ export interface Post {
       name: string;
     };
   };
+  seo: {
+    breadcrumbs: {
+      url: string;
+      text: string;
+    }[];
+    canonical: string;
+    cornerstone: boolean;
+    focuskw: string;
+    metaDesc: string;
+    metaKeywords: string;
+    metaRobotsNofollow: string;
+    metaRobotsNoindex: string;
+    opengraphAuthor: string;
+    opengraphDescription: string;
+    opengraphImage: {
+      altText: string;
+      mediaItemUrl: string;
+      sourceUrl: string;
+    };
+    opengraphModifiedTime: string;
+    opengraphPublishedTime: string;
+    opengraphPublisher: string;
+    opengraphSiteName: string;
+    opengraphTitle: string;
+    opengraphType: string;
+    opengraphUrl: string;
+    readingTime: number;
+    schema: {
+      articleType: string[];
+      pageType: string[];
+      raw: string;
+    };
+    title: string;
+    twitterDescription: string;
+    twitterImage: {
+      altText: string;
+      mediaItemUrl: string;
+      sourceUrl: string;
+    };
+    twitterTitle: string;
+  };
 }
 
 export async function getPosts(): Promise<Post[]> {
@@ -53,7 +94,48 @@ export async function getPosts(): Promise<Post[]> {
             node {
               name
             }
-          }      
+          }
+          seo {
+            breadcrumbs {
+              url
+              text
+            }
+            canonical
+            cornerstone
+            focuskw
+            metaDesc
+            metaKeywords
+            metaRobotsNofollow
+            metaRobotsNoindex
+            opengraphAuthor
+            opengraphDescription
+            opengraphImage {
+              altText
+              mediaItemUrl
+              sourceUrl
+            }
+            opengraphModifiedTime
+            opengraphPublishedTime
+            opengraphPublisher
+            opengraphSiteName
+            opengraphTitle
+            opengraphType
+            opengraphUrl
+            readingTime
+            schema {
+              articleType
+              pageType
+              raw
+            }
+            title
+            twitterDescription
+            twitterImage {
+              altText
+              mediaItemUrl
+              sourceUrl
+            }
+            twitterTitle
+          }
         }
       }
     }`,

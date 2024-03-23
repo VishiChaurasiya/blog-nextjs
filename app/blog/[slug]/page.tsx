@@ -4,9 +4,36 @@ import Post from "@/app/components/blog/Post";
 import SideNavbar from "@/app/components/blog/SideNavbar";
 import { notFound } from "next/navigation";
 import { JSDOM } from "jsdom";
+import { Metadata } from "next";
 
 interface IParams {
   slug?: string;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: IParams;
+}): Promise<Metadata> {
+  const posts = await getPosts();
+  const post = posts.find((post) => post.slug === params.slug);
+
+  if (!post) return {};
+
+  const seo = post.seo;
+
+  return {
+    title: { absolute: seo.title },
+    description: seo.opengraphDescription,
+    openGraph: {
+      images: [
+        {
+          url: seo.opengraphImage.sourceUrl,
+        },
+      ],
+    },
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_DOMAIN_URL}`),
+  };
 }
 
 const blog = async ({ params }: { params: IParams }) => {

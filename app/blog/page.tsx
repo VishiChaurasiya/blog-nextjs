@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getPosts } from "../actions/getPosts";
 import Post from "../components/blog/Post";
 import { GoBell } from "react-icons/go";
+import { Metadata } from "next";
 
 interface Color {
   bg: string;
@@ -15,6 +16,16 @@ const color: { [key: number]: Color } = {
   0: { bg: "#FFEFDB", font: "#8F5000" },
   1: { bg: "#EDE9FF", font: "#10009F" },
   2: { bg: "#EDFFD7", font: "#038F00" },
+};
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Boost your outreach response rates with Personalized videos and Audios.",
+  twitter: {
+    card: "summary_large_image",
+  },
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_DOMAIN_URL}`),
 };
 
 const blogs = async () => {
