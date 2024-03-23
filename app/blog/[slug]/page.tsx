@@ -3,6 +3,7 @@ import CTA from "@/app/components/blog/CTA";
 import Post from "@/app/components/blog/Post";
 import SideNavbar from "@/app/components/blog/SideNavbar";
 import { notFound } from "next/navigation";
+import { JSDOM } from "jsdom";
 
 interface IParams {
   slug?: string;
@@ -16,6 +17,14 @@ const blog = async ({ params }: { params: IParams }) => {
     return notFound();
   }
 
+  const dom = new JSDOM(post.content);
+  const doc = dom.window.document;
+  const headings = doc.querySelectorAll("h2, h3");
+  const headingList = Array.from(headings).map((heading) => ({
+    element: heading.tagName.toLowerCase(),
+    text: heading.textContent?.trim() || "",
+  }));
+
   return (
     <div>
       <header className="px-[15px] py-[40px] md:px-[92px] md:py-[64px] bg-black/5">
@@ -28,7 +37,7 @@ const blog = async ({ params }: { params: IParams }) => {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
-        <SideNavbar content={post.content} />
+        <SideNavbar headingList={headingList} />
       </main>
       <CTA />
     </div>

@@ -3,20 +3,17 @@
 import { useRef } from "react";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
-interface SideNavbarProps {
-  content: string;
+interface headingListProps {
+  element: string;
+  text: string;
 }
 
-const SideNavbar: React.FC<SideNavbarProps> = ({ content }) => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(content, "text/html");
+interface SideNavbarProps {
+  headingList: headingListProps[];
+}
 
-  const headings = doc.querySelectorAll("h2, h3");
-  const headingList = Array.from(headings).map((heading) => ({
-    element: heading.tagName.toLowerCase(),
-    text: heading.textContent?.trim() || "",
-  }));
+const SideNavbar: React.FC<SideNavbarProps> = ({ headingList }) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   return (
     <nav className="hidden lg:block flex-shrink-0 h-[calc(100vh-130px)] sticky top-[100px] rounded-[10px] bg-black/5 mt-5 w-[315px]">
