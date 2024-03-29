@@ -50,13 +50,15 @@ const blogs = async () => {
           {otherPosts.map((post, index) => (
             <article className="flex flex-col gap-4 flex-1" key={index}>
               <Link href={`/blog/${post.slug}`}>
-                <Image
-                  width="390"
-                  height="200"
-                  src={post.featuredImage.node.sourceUrl}
-                  alt="personaliz_logo"
-                  className="w-full lg:w-[390px] lg:h-[228px] flex-shrink-0 aspect-[1.5] rounded-[20px]"
-                />
+                {post.featuredImage && (
+                  <Image
+                    width="390"
+                    height="200"
+                    src={post.featuredImage.node.sourceUrl}
+                    alt="personaliz_logo"
+                    className="w-full lg:w-[390px] lg:h-[228px] flex-shrink-0 aspect-[1.5] rounded-[20px]"
+                  />
+                )}
               </Link>
               <Link
                 href={`/blog/tag/${post.tags.nodes[0].slug}`}

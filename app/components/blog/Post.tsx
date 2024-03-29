@@ -11,16 +11,8 @@ const Post = ({ post, disableLink }: PostProps) => {
   return (
     <div className="flex flex-col lg:flex-row gap-[25px] lg:gap-[40px]">
       <div className="flex-[1]">
-        {disableLink ? (
-          <Image
-            width="600"
-            height="380"
-            src={post.featuredImage.node.sourceUrl}
-            alt="personaliz_logo"
-            className="w-full lg:aspect-square rounded-[20px] object-cover"
-          />
-        ) : (
-          <Link href={`/blog/${post.slug}`}>
+        {post.featuredImage &&
+          (disableLink ? (
             <Image
               width="600"
               height="380"
@@ -28,8 +20,17 @@ const Post = ({ post, disableLink }: PostProps) => {
               alt="personaliz_logo"
               className="w-full lg:aspect-square rounded-[20px] object-cover"
             />
-          </Link>
-        )}
+          ) : (
+            <Link href={`/blog/${post.slug}`}>
+              <Image
+                width="600"
+                height="380"
+                src={post.featuredImage.node.sourceUrl}
+                alt="personaliz_logo"
+                className="w-full lg:aspect-square rounded-[20px] object-cover"
+              />
+            </Link>
+          ))}
       </div>
 
       <div className="flex-[2] flex flex-col justify-center gap-[10px] md:gap-[25px]">

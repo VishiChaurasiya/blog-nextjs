@@ -8,13 +8,18 @@ export interface Post {
   excerpt: string;
   date: string;
   content: string;
+  enqueuedStylesheets: {
+    nodes: {
+      src: string;
+    }[];
+  };
   tags: {
     nodes: {
       name: string;
       slug: string;
     }[];
   };
-  featuredImage: {
+  featuredImage?: {
     node: {
       sourceUrl: string;
     };
@@ -38,7 +43,7 @@ export interface Post {
     metaRobotsNoindex: string;
     opengraphAuthor: string;
     opengraphDescription: string;
-    opengraphImage: {
+    opengraphImage?: {
       altText: string;
       mediaItemUrl: string;
       sourceUrl: string;
@@ -79,6 +84,11 @@ export async function getPosts(): Promise<Post[]> {
           excerpt
           date
           content
+          enqueuedStylesheets {
+            nodes {
+              src
+            }
+          }
           tags {
             nodes {
               name

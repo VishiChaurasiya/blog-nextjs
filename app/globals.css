@@ -8,9 +8,9 @@
   }
 }
 
-#post-content * {
+/* #post-content * {
   all: revert;
-}
+} */
 
 #post-content img {
   max-width: 100% !important;
