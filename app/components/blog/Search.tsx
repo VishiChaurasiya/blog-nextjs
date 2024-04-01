@@ -48,7 +48,7 @@ const Search: React.FC<SearchProps> = ({ name, description, tags }) => {
     if (searchValue)
       try {
         const response = await axios.post<ApiResponse>(
-          `${process.env.NEXT_PUBLIC_API_DOMAIN_URL}/api/search`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/search`,
           { query: searchValue },
           {
             headers: {
@@ -112,7 +112,7 @@ const Search: React.FC<SearchProps> = ({ name, description, tags }) => {
           <div className="mt-1 max-h-[228px] w-full bg-white border border-[#D9D9D9] rounded-lg absolute overflow-y-auto">
             {filteredPosts.map(({ slug, title }, index) => (
               <Link
-                href={`/blog/${slug}`}
+                href={`/${slug}`}
                 key={index}
                 className="px-5 py-4 w-full block border-b last:border-b-0 border-[#D9D9D9] hover:bg-black/10 text-sm"
               >
@@ -127,7 +127,7 @@ const Search: React.FC<SearchProps> = ({ name, description, tags }) => {
         {tags.map(({ name, slug }) => (
           <Link
             key={slug}
-            href={`/blog/tag/${slug}`}
+            href={`/tag/${slug}`}
             className="px-[20px] py-[8px] rounded-[8px] border border-black text-sm"
             style={{
               background:

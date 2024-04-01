@@ -9,7 +9,7 @@ export interface Tag {
 export async function getTags(): Promise<Tag[]> {
   const query = {
     query: `query NewQuery {
-      tags {
+      tags(first: 100) {
         nodes {
           slug
           name

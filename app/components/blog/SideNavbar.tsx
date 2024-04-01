@@ -36,6 +36,17 @@ const SideNavbar: React.FC<SideNavbarProps> = ({ headingList }) => {
             className={`px-[24px] p-2 hover:bg-black/20 hover:border-l-[4px] border-black cursor-pointer ${
               element == "h3" && "pl-[40px]"
             }`}
+            onClick={() => {
+              const heading = document.getElementById(
+                `personaliz-blog-${element}-${index + 1}`
+              );
+
+              if (heading)
+                window.scrollTo({
+                  top: heading.offsetTop - 100,
+                  behavior: "smooth",
+                });
+            }}
           >
             {text}
           </p>

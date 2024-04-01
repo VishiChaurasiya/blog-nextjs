@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     const posts = await getPosts();
 
     const filteredPosts = posts
-      .filter((post) => post.title.toLowerCase().includes(query))
+      .filter((post) => post.title.toLowerCase().includes(query.toLowerCase()))
       .map((post) => ({ title: post.title, slug: post.slug }));
 
     return NextResponse.json({

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
-  metadataBase: new URL(`${process.env.NEXT_PUBLIC_DOMAIN_URL}`),
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
 };
 
 export default async function RootLayout({
@@ -55,23 +55,6 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <style dangerouslySetInnerHTML={{ __html: combinedCssData }} />
-
-        {/* <link
-          rel="stylesheet"
-          href="https://www.personaliz.ai/blog/wp-content/fonts/4162983532923b21302becd7cab8dcdd.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://www.personaliz.ai/blog/wp-includes/css/dist/block-library/style.min.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://www.personaliz.ai/blog/wp-includes/css/classic-themes.min.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://www.personaliz.ai/blog/wp-content/themes/summer-blog/style.css"
-        /> */}
       </head>
       <body className={inter.className}>
         <Navbar />

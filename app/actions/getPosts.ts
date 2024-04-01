@@ -65,7 +65,7 @@ export interface Post {
     twitterDescription: string;
     twitterImage: {
       altText: string;
-      mediaItemUrl: string;
+      mediaItemUrl?: string;
       sourceUrl: string;
     };
     twitterTitle: string;

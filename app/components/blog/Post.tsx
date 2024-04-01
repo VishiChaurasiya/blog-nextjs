@@ -21,7 +21,7 @@ const Post = ({ post, disableLink }: PostProps) => {
               className="w-full lg:aspect-square rounded-[20px] object-cover"
             />
           ) : (
-            <Link href={`/blog/${post.slug}`}>
+            <Link href={`/${post.slug}`}>
               <Image
                 width="600"
                 height="380"
@@ -35,7 +35,7 @@ const Post = ({ post, disableLink }: PostProps) => {
 
       <div className="flex-[2] flex flex-col justify-center gap-[10px] md:gap-[25px]">
         <Link
-          href={`/blog/tag/${post.tags.nodes[0].slug}`}
+          href={`/tag/${post.tags.nodes[0].slug}`}
           className="rounded-[5px] bg-black/5 px-[20px] py-[8px] text-sm font-medium max-w-max"
         >
           {post.tags.nodes[0].name}
@@ -46,7 +46,7 @@ const Post = ({ post, disableLink }: PostProps) => {
             {post.title}
           </h1>
         ) : (
-          <Link href={`/blog/${post.slug}`}>
+          <Link href={`/${post.slug}`}>
             <h1 className="lg:text-[30px] font-semibold leading-[1.3]">
               {post.title}
             </h1>
